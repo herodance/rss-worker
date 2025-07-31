@@ -4,7 +4,7 @@ import bilibili_user_video from './lib/bilibili/user/video';
 import telegram_channel from './lib/telegram/channel';
 import weibo_user from './lib/weibo/user';
 import xiaohongshu_user from './lib/xiaohongshu/user';
-import dateid from '.lib/tests/id';
+import tests_id from '.lib/tests/id';
 
 const route = new Hono();
 
