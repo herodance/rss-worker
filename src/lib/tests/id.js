@@ -66,13 +66,13 @@ let deal = async (ctx) => {
         let pubdate=[...resText.matchAll(/<span.*?class="fl gray".*?title="(.*?)".*?<\/span>/gm)][0][1]+':00';
         return {
             title: title,
-		    link: item,
-		    description: des,
-		    pubDate: pubdate,
-		    guid: item,
-		    author: author,
+		    		link: item,
+		   		 	description: des,
+		    		pubDate: pubdate,
+		    		guid: item,
+		    		author: author,
         };
-    ctx.header('Content-Type','application/xml; charset=utf-8');
+    ctx.header('Content-Type','application/xml');
 	return ctx.body(renderRss2({
         title: '2048',
         link: 'https://hjd2048.com/2048/',
