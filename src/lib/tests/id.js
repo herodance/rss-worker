@@ -72,17 +72,18 @@ let deal = async (ctx) => {
 		    		guid: item,
 		    		author: author,
         };
-    ctx.header('Content-Type','application/xml');
-	return ctx.body(renderRss2({
+    );
+);
+ctx.header('Content-Type','application/xml');
+return ctx.body(renderRss2({
         title: '2048',
         link: 'https://hjd2048.com/2048/',
         description: '2048',
         language: 'zh-cn',
         items: items,
-    }));
-
-    }
+    }))
 }
+
 
 let setup = (route) => {
 	route.get('/2048/:uid', deal);
