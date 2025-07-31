@@ -8,7 +8,7 @@ import tests_id from '.lib/tests/id';
 
 const route = new Hono();
 
-let plugins = [bilibili_user_dynamic, bilibili_user_video, telegram_channel, weibo_user, xiaohongshu_user,dateid];
+let plugins = [bilibili_user_dynamic, bilibili_user_video, telegram_channel, weibo_user, xiaohongshu_user,tests_id];
 
 for (let plugin of plugins) {
 	plugin.setup(route);
