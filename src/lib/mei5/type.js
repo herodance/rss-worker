@@ -27,7 +27,7 @@ let deal=async (ctx)=> {
   let ii=i.getHours()*2
   
   //map会触发请求过多错误，改用额外判定，每小时获取不同的网页
-    for(let item of urlarr.slice(ii,ii+2)){
+ /*for(let item of urlarr.slice(ii,ii+2)){
     let url_content=`${url_re}${item}.html`
 		let guid_url=`http://www.mei5.vip/${item}.html`
     const res=await fetch(url_content,{headers})  
@@ -57,42 +57,37 @@ let deal=async (ctx)=> {
 			      author:author
 			    })
 			}
-    }
-  
+    }*/  
 	//map会触发请求过多错误
-  /*let items=await Promise.all(urlarr.map(async (item)=>{
-    let url_content=`https://www.mei5.vip/Xiuren/${item}.html`
+  	let items=await Promise.all(urlarr.slice(ii,ii+2).map(async (item)=>{
+    let url_content=`${url_re}${item}.html`
+		let guid_url=`http://www.mei5.vip/${item}.html`
     const res=await fetch(url_content,{headers})  
     const html=await res.text()
     let title=html.match(/<h1 class="article-title">(.*?)<\/h1>/)?.[1]
-    let author=html.match(/模特：<a.*?>(.*?)<\/a>/)?.[1]
+   	let author=html.match(/\?keyword=(.*?)"/)?.[1]
     let date=html.match(/更新：([0-9.]+)/)?.[1]
-    let pubDate=date.replaceAll('.','-')+' 00:00:00'
+    let pubDate=date.replaceAll('.','-')+` ${ii/2<10 ? `0`+ii/2 : ii/2}:00:00`
+			pubDate=new Date(pubDate.replace(/\s/g,'T')+'+00:00').toUTCString()
     const reg_page=new RegExp(`${item}_[0-9]*`,'g')
     let url_page=html.matchAll(reg_page)
     let des_img=html.matchAll(/<img alt=.* title=.* src="(.*?)"/g)
     let des=[]
-    for(let item of des_img){
-        des.push(item[1])
-    }
+    for(let item of des_img){des.push(item[1])}
     let pagearr=[]
-    for(let page of url_page){
-        pagearr.push(page[0])
-    }
-    //let des_page=await getDes(pagearr)
-    let desarr=des//.concat(des_page)
-    let descr=desarr.map((item)=>{
-      return `<img src="https://www.mei5.vip${item}">`
-    }).join('</br>')
+    for(let page of url_page){pagearr.push(page[0])}
+    let des_page=await getDes(pagearr,url_re)
+    let desarr=des.concat(des_page)
+    let descr=desarr.map((item)=>{return `<img src="${url_re}${item}" referrerpolicy="no-referrer">`}).join('<br>')	
     return {
       title:title,
       link:url_content,
       description:descr,
       pubDate:pubDate,
-      guid:url_content,
+      guid:guid_url,
       author:author
     }
-  }))*/
+  }))
 
 	
 
