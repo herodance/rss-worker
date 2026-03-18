@@ -22,7 +22,7 @@ let deal=async (ctx)=> {
   for(let item of urlid){
     urlarr.push(item[0])
   }
-	let items=[]
+	//let items=[]
   let i=new Date()
   let ii=i.getHours()*2
   
