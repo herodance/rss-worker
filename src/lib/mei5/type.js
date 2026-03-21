@@ -93,6 +93,11 @@ let deal=async (ctx)=> {
 
   ctx.header('Content-Type', 'application/xml; charset=utf-8')
 	ctx.header('Connection', 'close');
+  ctx.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+  ctx.header('Pragma', 'no-cache');
+  ctx.header('Expires', '0');
+  
+  
 	const rssBody = renderRss2({
 	    title: `${uid_content[uid]}-Xgmn8`,
 	    link: `${url_root}/${uid}.html`,
