@@ -71,7 +71,7 @@ let deal=async (ctx)=> {
 			pubDate=new Date(pubDate.replace(/\s/g,'T')+'+00:00').toUTCString()
     const reg_page=new RegExp(`${item}_[0-9]*`,'g')
     let url_page=html.matchAll(reg_page)
-    let des_img=html.matchAll(/<img alt=.* title=.* src="(.*?)"/g)
+    let des_img=html.matchAll(/<img alt=.* title=.* src="\/(.*?)"/g)
     let des=[]
     for(let item of des_img){des.push(item[1])}
     let pagearr=[]
