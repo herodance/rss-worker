@@ -91,7 +91,8 @@ let deal=async (ctx)=> {
 
 	
 
-  ctx.header('Content-Type','application/xml';charset=utf-8;'Connection', 'close');
+  ctx.header('Content-Type','application/xml';charset=utf-8)
+	ctx.header('Connection', 'close');
 	return ctx.body(renderRss2({
         title:`${uid_content[uid]}-Xgmn8`,
         link: `${url_root}/${uid}.html`,
