@@ -124,8 +124,6 @@ async function getDes(pagearr,url_re){
   return desall
 }
 
-deal=deal.trim()
-
 let setup = (route) => {
 	route.get('/mei5/:uid', deal);
 };
