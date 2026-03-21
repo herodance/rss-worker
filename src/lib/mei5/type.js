@@ -93,13 +93,22 @@ let deal=async (ctx)=> {
 
   ctx.header('Content-Type','application/xml;charset=utf-8')
 	ctx.header('Connection', 'close');
-	return ctx.body(renderRss2({
+	const rssBody = renderRss2({
+	    title: `${uid_content[uid]}-Xgmn8`,
+	    link: `${url_root}/${uid}.html`,
+	    description: '美女图片',
+	    language: 'zh-cn',
+	    items: items,
+	});
+  const finalXml = `<?xml version="1.0" encoding="UTF-8"?>\n${rssBody.trim()}`;
+	return ctx.body(finalXml);
+	/*return ctx.body(renderRss2({
         title:`${uid_content[uid]}-Xgmn8`,
         link: `${url_root}/${uid}.html`,
         description: '美女图片',
         language: 'zh-cn',
         items: items,
-    }));
+    }));*/
 }
 
 
