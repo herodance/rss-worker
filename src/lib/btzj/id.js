@@ -29,6 +29,7 @@ let deal = async (ctx) => {
             author: author,
         }
     }))
+	  items = items.filter(el => el !== '')
     ctx.header('Content-Type', 'application/xml');
     return ctx.body(renderRss2({
         title: `首页-1lou`,
