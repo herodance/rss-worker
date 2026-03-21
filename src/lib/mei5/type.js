@@ -91,7 +91,7 @@ let deal=async (ctx)=> {
 
 	
 
-  ctx.header('Content-Type','application/xml;charset=utf-8')
+  ctx.header('Content-Type', 'application/xml; charset=utf-8')
 	ctx.header('Connection', 'close');
 	const rssBody = renderRss2({
 	    title: `${uid_content[uid]}-Xgmn8`,
