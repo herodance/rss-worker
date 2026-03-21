@@ -100,7 +100,7 @@ let deal=async (ctx)=> {
 	    language: 'zh-cn',
 	    items: items,
 	});
-  const finalXml = `<?xml version="1.0" encoding="UTF-8"?>\n${rssBody.trim()}`;
+  const finalXml = rssBody.trim();
 	return ctx.body(finalXml);
 	/*return ctx.body(renderRss2({
         title:`${uid_content[uid]}-Xgmn8`,
