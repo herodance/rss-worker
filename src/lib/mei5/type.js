@@ -91,7 +91,7 @@ let deal=async (ctx)=> {
 
 	
 
-  ctx.header('Content-Type','application/xml');
+  ctx.header('Content-Type','application/xml';charset=utf-8;'Connection', 'close');
 	return ctx.body(renderRss2({
         title:`${uid_content[uid]}-Xgmn8`,
         link: `${url_root}/${uid}.html`,
@@ -99,9 +99,8 @@ let deal=async (ctx)=> {
         language: 'zh-cn',
         items: items,
     }));
-
-
 }
+
 
 //批量获取页面图片函数，传入数组
 async function getDes(pagearr,url_re){
@@ -123,6 +122,8 @@ async function getDes(pagearr,url_re){
   let desall=deshtml.flat()
   return desall
 }
+
+deal=deal.trim()
 
 let setup = (route) => {
 	route.get('/mei5/:uid', deal);
